@@ -2,7 +2,7 @@ install:
 	poetry install
 
 lint:
-	poetry run flake8 page-loader
+	poetry run flake8 page_loader
 
 publish:
 	poetry build
@@ -13,7 +13,7 @@ selfcheck:
 	poetry check
 
 test:
-	poetry run pytest -vv --cov=gendiff --cov-report xml tests/
+	poetry run pytest -vv --cov=page_loader --cov-report xml tests/
 
 check: selfcheck test lint
 	

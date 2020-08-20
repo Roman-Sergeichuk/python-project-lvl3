@@ -9,7 +9,6 @@ def get_parse_args():
         '--output',
         type=str,
         default='',
-    #   choices=['nested', 'plain', 'json'],
         help='set output directory'
     )
     return parser

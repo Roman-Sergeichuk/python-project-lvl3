@@ -1,9 +1,5 @@
 import requests
-from page_loader.cli import get_parse_args
 from urllib.parse import urlparse
-
-parser = get_parse_args()
-args = parser.parse_args()
 
 
 def make_filename(url):
