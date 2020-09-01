@@ -6,6 +6,17 @@
 
 [![Build Status](https://travis-ci.com/Roman-Sergeichuk/python-project-lvl3.svg?branch=master)](https://travis-ci.com/Roman-Sergeichuk/python-project-lvl3)
 
+# Page-loader by Roman-Sergeichuk
+
+## Description
+
+Utility for calling from the network.
+
+Utility features:
+
+You can specify the folder where you want to put the finished file.
+The utility downloads all the resources on the page and changes the page so that it starts linking to local versions.
+
 ## Installation
 For installation use the following command:
 

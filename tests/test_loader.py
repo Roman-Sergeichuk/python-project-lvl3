@@ -1,4 +1,4 @@
-from page_loader.load import make_filename, load_content
+from page_loader.load import make_page_name, get_response
 from tests.constants import TEST_DIR_PATH
 import os
 #import pytest
@@ -16,11 +16,12 @@ expected_filename = 'rsergeichuk-pythonanywhere-com-dashboard.html'
 
 
 def test_loader():
-    response = load_content(test_url)
+    response = get_response(test_url)
     directory = test_dir
     if directory:
         directory += '/'
-    file_name = make_filename(test_url)
+    file_name = make_page_name(test_url)
     with open(f'{directory}{file_name}', 'w') as file:
         file.write(response.text)
     assert file_name == expected_filename
+
