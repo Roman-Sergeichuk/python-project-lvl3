@@ -46,7 +46,6 @@ def make_inner_filename(path_to_file):
     return final_filename
 
 
-
 def get_response(url):
     response = requests.get(url)
     response.encoding = 'utf-8'
@@ -60,14 +59,13 @@ def save_page(url, output):
             os.mkdir(pagefolder)
         for res in soup.findAll(tag2find):  # images, css, etc..
             try:
-                if not res.has_attr(inner):  # check if inner tag (file object) exists
+                if not res.has_attr(inner):
                     continue  # may or may not exist
-                #filename = re.sub('\W+', '', os.path.basename(res[inner]))  # clean special chars
                 inner_filename = make_inner_filename(res[inner])
                 fileurl = urljoin(url, res.get(inner))
                 filepath = os.path.join(pagefolder, inner_filename)
                 # rename html ref so can move html and folder of files anywhere
-                res[inner] = os.path.join(os.path.basename(pagefolder), inner_filename)
+                res[inner] = os.path.join(os.path.basename(pagefolder), inner_filename)  # noqa: E501
                 if not os.path.isfile(filepath):  # was not downloaded
                     with open(filepath, 'wb') as file:
                         filebin = session.get(fileurl)
@@ -81,12 +79,13 @@ def save_page(url, output):
     response = requests.get(url)
     response.encoding = 'utf-8'
     soup = BeautifulSoup(response.text, features="lxml")
-    page_folder_name = make_page_name(url) + '_files'  # page contents
+    page_folder_name = make_page_name(url) + '_files'
     folder_path = os.path.join(output, page_folder_name)
     soup = soup_find_save(folder_path, 'img', 'src')
     soup = soup_find_save(folder_path, 'link', 'href')
     soup = soup_find_save(folder_path, 'script', 'src')
-    page_name = os.path.join(output, make_page_name(url))
-    with open(page_name + '.html', 'wb') as file:
+    page_name = make_page_name(url) + '.html'
+    path_to_file = os.path.join(output, page_name)
+    with open(path_to_file, 'wb') as file:
         file.write(soup.prettify('utf-8'))
-    return soup
+    return path_to_file, page_folder_name

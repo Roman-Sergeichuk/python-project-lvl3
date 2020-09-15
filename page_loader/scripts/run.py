@@ -1,10 +1,7 @@
 #!usr/bin/env python3
-from page_loader.load import get_response, save_page
+from page_loader.load import save_page
 from page_loader.cli import get_parse_args
 import os
-from bs4 import BeautifulSoup
-import re
-from urllib.parse import urljoin, urlparse
 
 
 CURRENT_DIR_PATH = os.path.dirname(__file__)
@@ -34,9 +31,6 @@ def main():
     if directory:
         directory += '/'
     save_page(url, directory)
-
-
-
 
 
 if __name__ == '__main__':
