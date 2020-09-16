@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "page-loader_by_Roman-Sergeichuk"
-version = "0.2.0"
+version = "0.3.0"
 description = ""
 authors = ["Roman-Sergeichuk <sergeichuk.roman@mail.ru>"]
 

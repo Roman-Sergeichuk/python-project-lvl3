@@ -11,4 +11,13 @@ def get_parse_args():
         default='',
         help='set output directory'
     )
+    parser.add_argument(
+        '-l',
+        '--level',
+        type=str,
+        default=None,
+        choices=['debug', 'DEBUG', 'INFO', 'info', 'warning', 'WARNING',
+                 'ERROR', 'error', 'critical', 'CRITICAL', None, ''],
+        help='level of logging'
+    )
     return parser

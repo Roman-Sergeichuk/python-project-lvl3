@@ -26,3 +26,5 @@ An example of installing and running the utility is shown below
 [![asciicast](https://asciinema.org/a/OnSawt87QlJKfVZvFe5EtIV2f.svg)](https://asciinema.org/a/OnSawt87QlJKfVZvFe5EtIV2f)
 ### Downloading of the page with local web page resources
 [![asciicast](https://asciinema.org/a/bDnkMPCKI1dlKZnufiLttqLix.svg)](https://asciinema.org/a/bDnkMPCKI1dlKZnufiLttqLix)
+### Downloading of the page with logging
+[![asciicast](https://asciinema.org/a/FuaquONrFhtThvMwW22GDswy5.svg)](https://asciinema.org/a/FuaquONrFhtThvMwW22GDswy5)

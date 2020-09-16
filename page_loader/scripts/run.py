@@ -28,9 +28,10 @@ def main():
     args = parser.parse_args()
     url = args.url
     directory = args.output
+    level_logging = args.level
     if directory:
         directory += '/'
-    save_page(url, directory)
+    save_page(url, directory, level_logging)
 
 
 if __name__ == '__main__':

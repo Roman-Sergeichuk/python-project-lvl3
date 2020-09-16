@@ -25,7 +25,7 @@ check = {
 def test():
     for key, item in check.items():
         with tempfile.TemporaryDirectory() as temp:
-            result = save_page(key, temp)
+            result = save_page(key, temp, level_logging='debug')
             assert os.path.join(temp, result[0]) == os.path.join(temp, item[0])
             assert os.path.join(temp, result[1]) == os.path.join(temp, item[1])
             assert os.path.isfile(os.path.join(temp, result[0])) is True

@@ -3,7 +3,7 @@ from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 import re
 import os
-import sys
+import logging
 
 
 # def page_name(url):
@@ -17,6 +17,10 @@ import sys
 #     return name
 
 
+class KnownError(Exception):
+    pass
+
+
 def make_page_name(url):
     parts_url = urlparse(url)
     host_name = parts_url.netloc
@@ -28,7 +32,7 @@ def make_page_name(url):
     return re.sub(r'(\.|/)', '-', name)
 
 
-def make_inner_filename(path_to_file):
+def make_inner_filename(path_to_file, ):
     parts_url = urlparse(path_to_file)
     path_without_host = parts_url.path
     path = os.path.dirname(path_without_host)
@@ -52,7 +56,26 @@ def get_response(url):
     return response
 
 
-def save_page(url, output):
+def save_page(url, output, level_logging):
+    if level_logging == 'debug' or level_logging == 'DEBUG':
+        level_logging = logging.DEBUG
+    elif level_logging == 'warning' or level_logging == 'WARNING':
+        level_logging = logging.WARNING
+    elif level_logging == 'error' or level_logging == 'ERROR':
+        level_logging = logging.ERROR
+    elif level_logging == 'critical' or level_logging == 'CRITICAL':
+        level_logging = logging.CRITICAL
+    else:
+        level_logging = logging.INFO
+
+    logging.basicConfig(
+        format='%(asctime)s %(levelname)s:%(message)s',
+        filename='my.log',
+        filemode='w',
+        level=level_logging
+    )
+    logging.debug(level_logging)
+
     def soup_find_save(pagefolder, tag2find='img', inner='src'):
         """saves on specified `pagefolder` all tag2find objects"""
         if not os.path.exists(pagefolder):  # create only once
@@ -70,22 +93,34 @@ def save_page(url, output):
                     with open(filepath, 'wb') as file:
                         filebin = session.get(fileurl)
                         file.write(filebin.content)
-            except Exception as exc:
-                print(exc, file=sys.stderr)
+            except Exception:
+                logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s',  # noqa: E501
+                                    filename='my.log',
+                                    filemode='w',
+                                    level=logging.WARNING)
+                logging.warning('file was not downloaded', exc_info=True)
         return soup
 
     session = requests.Session()
-    # ... whatever other requests config you need here
     response = requests.get(url)
     response.encoding = 'utf-8'
     soup = BeautifulSoup(response.text, features="lxml")
     page_folder_name = make_page_name(url) + '_files'
     folder_path = os.path.join(output, page_folder_name)
+    logging.info('Getting images')
     soup = soup_find_save(folder_path, 'img', 'src')
-    soup = soup_find_save(folder_path, 'link', 'href')
+    # soup = soup_find_save(folder_path, 'link', 'href')
+    logging.info('Getting scripts')
     soup = soup_find_save(folder_path, 'script', 'src')
     page_name = make_page_name(url) + '.html'
     path_to_file = os.path.join(output, page_name)
-    with open(path_to_file, 'wb') as file:
-        file.write(soup.prettify('utf-8'))
+    logging.debug(path_to_file)
+    try:
+        with open(path_to_file, 'wb') as file:
+            file.write(soup.prettify('utf-8'))
+    except Exception as e:
+        logging.error('No such directory', exc_info=True)
+        raise KnownError('No such directory') from e
+    else:
+        logging.info('page downloaded successfully')
     return path_to_file, page_folder_name
