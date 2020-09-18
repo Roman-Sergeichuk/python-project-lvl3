@@ -1,7 +1,8 @@
 #!usr/bin/env python3
-from page_loader.load import save_page
+from page_loader.load import save_page, KnownError
 from page_loader.cli import get_parse_args
 import os
+import sys
 
 
 CURRENT_DIR_PATH = os.path.dirname(__file__)
@@ -31,7 +32,12 @@ def main():
     level_logging = args.level
     if directory:
         directory += '/'
-    save_page(url, directory, level_logging)
+    try:
+        save_page(url, directory, level_logging)
+    except KnownError:
+        sys.exit(1)
+    else:
+        sys.exit(0)
 
 
 if __name__ == '__main__':
