@@ -5,6 +5,7 @@ import re
 import os
 import logging
 import sys
+from progress.bar import IncrementalBar
 
 
 # def page_name(url):
@@ -33,17 +34,19 @@ def make_page_name(url):
     return re.sub(r'(\.|/)', '-', name)
 
 
-def make_inner_filename(path_to_file, ):
+def make_inner_filename(path_to_file):
     parts_url = urlparse(path_to_file)
     path_without_host = parts_url.path
     path = os.path.dirname(path_without_host)
     path = path.replace('/', '-')[1:]
+    if path:
+        path += '-'
     origin_filename = os.path.basename(path_to_file)
     file_name, extension = os.path.splitext(origin_filename)
     final_filename = ''
     for char in file_name:
         final_filename += char
-        if len(final_filename) >= 40:
+        if len(final_filename) >= 200:
             final_filename = path + final_filename + extension
             break
     else:
@@ -105,10 +108,14 @@ def save_page(url, output, logging_level):
                 logger.error('Указанный путь не существует.')
                 raise KnownError('Указанный путь не существует.') from e
             logger.debug('Папка с локальным контентом успешно создана')
+        resources = soup.findAll(tag2find)
+        files_count = len(resources)
+        bar = IncrementalBar('Loading:', max=files_count)
         for res in soup.findAll(tag2find):  # images, css, etc..
             try:
-                if not res.has_attr(inner):
-                    continue  # may or may not exist
+                # if not res.has_attr(inner):
+                #     print('Атрибут отсутствует')
+                #     continue  # may or may not exist
                 inner_filename = make_inner_filename(res[inner])
                 fileurl = urljoin(url, res.get(inner))
                 filepath = os.path.join(pagefolder, inner_filename)
@@ -121,6 +128,8 @@ def save_page(url, output, logging_level):
                         file.write(filebin.content)
             except Exception:
                 logger.warning('file was not downloaded', exc_info=True)
+            bar.next()
+        bar.finish()
         return soup
 
     session = requests.Session()
@@ -146,13 +155,17 @@ def save_page(url, output, logging_level):
         raise KnownError('Сервер не отвечает.')
     response.encoding = 'utf-8'
     soup = BeautifulSoup(response.text, features="lxml")
+    logger.debug(response.text)
     page_folder_name = make_page_name(url) + '_files'
     folder_path = os.path.join(output, page_folder_name)
     logging.info('Поиск и загрузка картинок')
+    print('Поиск и загрузка картинок')
     soup = soup_find_save(folder_path, 'img', 'src')
     logging.info('Поиск и загрузка ссылок')
+    print('Поиск и загрузка ссылок')
     soup = soup_find_save(folder_path, 'link', 'href')
     logging.info('Поиск и загрузка скриптов')
+    print('Поиск и загрузка скриптов')
     soup = soup_find_save(folder_path, 'script', 'src')
     page_name = make_page_name(url) + '.html'
     path_to_file = os.path.join(output, page_name)

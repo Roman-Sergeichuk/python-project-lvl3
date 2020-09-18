@@ -3,7 +3,7 @@
 <head>
 <title>Курсы по программированию</title>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="D6gNNvPYVsJ7MCV8ITvR0sK25Wjy/M5ocIfliB9H6CNU+vkgA6+LOeGeebTF2k86BBs1D+QjQE26vPc6vxkrew==" />
+<meta name="csrf-token" content="DtmPgYpUazzzK0KmkXm4l4oNhHNwrjj6X/Q9BhHGghS+uW26VtFP76zjSoRmbmrLA6DzVg57OSejsnM/0pOy0w==" />
 <meta name="csp-nonce" />
 <link rel="shortcut icon" type="image/x-icon" href="https://cdn2.hexlet.io/assets/favicon-f5d8d6de8f142b12d62d657d0c3a49fd437282b92b0d418942f60657f79d805f.ico" />
 <meta content='width=device-width, initial-scale=1.0' name='viewport'>
@@ -15,7 +15,7 @@
 
 <script>
 //<![CDATA[
-window.gon={};gon.is_bot=true;gon.applications={};gon.hs={"autoloadBeacon":true};gon.current_user={"id":null,"email":null,"username":null,"created_at":"2020-09-18T14:24:53.022Z","last_viewed_notification_id":null,"paid_days_count":0,"full_name":"","text":" ()","is_guest":true,"is_mentor":false,"current_company":null,"can_use_paid_features":false};gon.token="w6w7HHDQN+9pcZ82O040ZR3dMpFuSecqflWocLbFzZuY/s8KgKfqFPPfw/7fr6qN23Di9niWaQ+0brrCFpsOww==";gon.disqus_name="hexletio";gon.locale="ru";gon.rails_env="production";gon.mobile=null;gon.google={"analytics_key":"UA-1360700-51","optimize_key":"GTM-5QDVFPF"};gon.social_signin=false;
+window.gon={};gon.is_bot=true;gon.applications={};gon.hs={"autoloadBeacon":true};gon.current_user={"id":null,"email":null,"username":null,"created_at":"2020-09-18T22:22:26.826Z","last_viewed_notification_id":null,"paid_days_count":0,"full_name":"","text":" ()","is_guest":true,"is_mentor":false,"current_company":null,"can_use_paid_features":false};gon.token="wz5LTtR/vi28zW8jHbQNtsDjp+PAriyPjv5cK5zHDlNzXql1CPqa/uMFZwHqo9/qSU7Qxr57LVJyuBISX5I+lA==";gon.disqus_name="hexletio";gon.locale="ru";gon.rails_env="production";gon.mobile=null;gon.google={"analytics_key":"UA-1360700-51","optimize_key":"GTM-5QDVFPF"};gon.social_signin=false;
 //]]>
 </script>
 <script type='application/ld+json'>
@@ -229,6 +229,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-js fab'></span>
 <div class='ml-auto my-auto'>
+24 часа
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Введение в программирование</h3>
+</div>
+<div class='text-muted mb-2'>Что такое компьютер на самом деле? Понимает ли он языки програ...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/introduction_to_programming">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
 31 час
 </div>
 </div>
@@ -277,18 +301,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-js fab'></span>
 <div class='ml-auto my-auto'>
-24 часа
+9 часов
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Введение в программирование</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Составные данные</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
 </div>
-<div class='text-muted mb-2'>Что такое компьютер на самом деле? Понимает ли он языки програ...</div>
+</div>
+<div class='text-muted mb-2'>Следующий шаг после освоения основ программирования это изучен...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/introduction_to_programming">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/compound_data">Посмотреть
 </a></div>
 </div>
 </div>
@@ -307,123 +334,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Архитектура фронтенда</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Абстракция с помощью данных</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>Несмотря на обилие различных фреймворков и способов разработки...</div>
+<div class='text-muted mb-2'>Программирование не ограничивается одними лишь вычислениями. Л...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-frontend-architecture">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-12 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Прототипы</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Этот курс посвящён реализации объектно-ориентированного програ...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js_prototypes">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-11 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Последовательности</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Продолжение изучения составных данных на более продвинутом уро...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/sequences">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-10 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Деревья</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Множество окружающих нас вещей, в мире компьютеров, имеют древ...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-trees">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-11 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Программирование, управляемое данными</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>В течение этого курса мы будем писать собственную карточную иг...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/ddp">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/js-data-abstraction">Посмотреть
 </a></div>
 </div>
 </div>
@@ -469,15 +388,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Предметно-ориентированное проектирование</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Архитектура фронтенда</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>Курс посвящен процессу создания программных абстракций — модел...</div>
+<div class='text-muted mb-2'>Несмотря на обилие различных фреймворков и способов разработки...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-ddd">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/js-frontend-architecture">Посмотреть
 </a></div>
 </div>
 </div>
@@ -490,21 +409,75 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-js fab'></span>
 <div class='ml-auto my-auto'>
-12 часов
+11 часов
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Функциональное программирование</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Последовательности</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>Тема функций — одна из центральных в JavaScript. Их мощь позво...</div>
+<div class='text-muted mb-2'>Продолжение изучения составных данных на более продвинутом уро...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-functions-hard-way">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/sequences">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+11 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Программирование, управляемое данными</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>В течение этого курса мы будем писать собственную карточную иг...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/ddp">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+18 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Полиморфизм</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Полиморфизм (подтипов) – главная отличительная черта современн...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-polymorphism">Посмотреть
 </a></div>
 </div>
 </div>
@@ -532,222 +505,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/js-advanced-testing">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-14 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Функции</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Функции в JavaScript способны на большее! В этом курсе вы позн...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-functions">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-3 часа
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Автоматное программирование</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Конечный автомат — удобная модель представления процессов, обл...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-abp">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-15 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Введение в ООП</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>JS - мультипарадигменный язык программирования с поддержкой об...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-introduction-to-oop">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-24 часа
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: React</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>React — библиотека, которая перевернула наши представления о т...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-react">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-9 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Абстракция с помощью данных</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Программирование не ограничивается одними лишь вычислениями. Л...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-data-abstraction">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-9 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Разработка абстракций для асинхронности</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Асинхронное программирование не просто само по себе. Особенно ...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js_async">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-9 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Составные данные</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Следующий шаг после освоения основ программирования это изучен...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/compound_data">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
-8 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Обработка ошибок</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Этот курс посвящён обработке ошибок в программах на JavaScript...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js_errors">Посмотреть
 </a></div>
 </div>
 </div>
@@ -814,21 +571,210 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-js fab'></span>
 <div class='ml-auto my-auto'>
-18 часов
+9 часов
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Полиморфизм</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Разработка абстракций для асинхронности</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>Полиморфизм (подтипов) – главная отличительная черта современн...</div>
+<div class='text-muted mb-2'>Асинхронное программирование не просто само по себе. Особенно ...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-polymorphism">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/js_async">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+9 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Предметно-ориентированное проектирование</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Курс посвящен процессу создания программных абстракций — модел...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-ddd">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+12 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Функциональное программирование</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Тема функций — одна из центральных в JavaScript. Их мощь позво...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-functions-hard-way">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+12 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Прототипы</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Этот курс посвящён реализации объектно-ориентированного програ...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js_prototypes">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+14 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Функции</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Функции в JavaScript способны на большее! В этом курсе вы позн...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-functions">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+3 часа
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Автоматное программирование</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Конечный автомат — удобная модель представления процессов, обл...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-abp">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+10 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Деревья</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Множество окружающих нас вещей, в мире компьютеров, имеют древ...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-trees">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+16 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Объекты</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Объект — самый навороченный тип данных в JavaScript. С его пом...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-objects">Посмотреть
 </a></div>
 </div>
 </div>
@@ -895,33 +841,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-js fab'></span>
 <div class='ml-auto my-auto'>
-16 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Объекты</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Объект — самый навороченный тип данных в JavaScript. С его пом...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/js-objects">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-js fab'></span>
-<div class='ml-auto my-auto'>
 11 часов
 </div>
 </div>
@@ -949,6 +868,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-js fab'></span>
 <div class='ml-auto my-auto'>
+15 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Введение в ООП</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>JS - мультипарадигменный язык программирования с поддержкой об...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-introduction-to-oop">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
 18 часов
 </div>
 </div>
@@ -964,6 +910,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/js-asynchronous-programming">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+24 часа
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: React</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>React — библиотека, которая перевернула наши представления о т...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js-react">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1024,6 +997,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 </div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-js fab'></span>
+<div class='ml-auto my-auto'>
+8 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>JS: Обработка ошибок</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Этот курс посвящён обработке ошибок в программах на JavaScript...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/js_errors">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
 </div>
 </section>
 
@@ -1051,18 +1051,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-php fab'></span>
 <div class='ml-auto my-auto'>
-4 часа
+3 часа
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Ключевые аспекты веб-разработки на PHP</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>PHP: Настройка окружения</h3>
 </div>
-<div class='text-muted mb-2'>Этот обзорный курс затрагивает основные аспекты современной ве...</div>
+<div class='text-muted mb-2'>Реальный опыт программирования возможен только если код запуск...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/php-overview-of-web-development">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/php-setup-environment">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1099,18 +1099,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-php fab'></span>
 <div class='ml-auto my-auto'>
-3 часа
+4 часа
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>PHP: Настройка окружения</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Ключевые аспекты веб-разработки на PHP</h3>
 </div>
-<div class='text-muted mb-2'>Реальный опыт программирования возможен только если код запуск...</div>
+<div class='text-muted mb-2'>Этот обзорный курс затрагивает основные аспекты современной ве...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/php-setup-environment">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/php-overview-of-web-development">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1123,21 +1123,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-php fab'></span>
 <div class='ml-auto my-auto'>
-11 часов
+9 часов
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>PHP: Функциональное программирование</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>PHP: Абстракция с помощью данных</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>В этом курсе мы научимся использовать функциональные возможнос...</div>
+<div class='text-muted mb-2'>С ростом кодовой базы растет и сложность понимания происходяще...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/php-functional">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/php-data-abstraction">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1165,33 +1165,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/php-object-oriented-design">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-php fab'></span>
-<div class='ml-auto my-auto'>
-21 час
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>PHP: Введение в ООП</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>PHP — объектно-ориентированный язык программирования, использу...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/php-introduction-to-oop">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1366,21 +1339,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-php fab'></span>
 <div class='ml-auto my-auto'>
-9 часов
+11 часов
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>PHP: Абстракция с помощью данных</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>PHP: Функциональное программирование</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>С ростом кодовой базы растет и сложность понимания происходяще...</div>
+<div class='text-muted mb-2'>В этом курсе мы научимся использовать функциональные возможнос...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/php-data-abstraction">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/php-functional">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-php fab'></span>
+<div class='ml-auto my-auto'>
+21 час
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>PHP: Введение в ООП</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>PHP — объектно-ориентированный язык программирования, использу...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/php-introduction-to-oop">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1722,30 +1722,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-python fab'></span>
 <div class='ml-auto my-auto'>
-4 часа
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Python: Настройка окружения</h3>
-</div>
-<div class='text-muted mb-2'>В этом курсе рассматривается понятие языка программирования, о...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/python-setup-environment">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-python fab'></span>
-<div class='ml-auto my-auto'>
 2 часа
 </div>
 </div>
@@ -1758,6 +1734,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/python-development-course">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-python fab'></span>
+<div class='ml-auto my-auto'>
+4 часа
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Python: Настройка окружения</h3>
+</div>
+<div class='text-muted mb-2'>В этом курсе рассматривается понятие языка программирования, о...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/python-setup-environment">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1785,33 +1785,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/python-dicts">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-python fab'></span>
-<div class='ml-auto my-auto'>
-15 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Python: Функции</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>Функции в Python способны на большее! В этом курсе вы познаком...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/python-functions">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1932,21 +1905,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-python fab'></span>
 <div class='ml-auto my-auto'>
-10 часов
+15 часов
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Python: Списки</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Python: Функции</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>Списки — основной способ объединять данные в коллекции и одна ...</div>
+<div class='text-muted mb-2'>Функции в Python способны на большее! В этом курсе вы познаком...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/python-lists">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/python-functions">Посмотреть
 </a></div>
 </div>
 </div>
@@ -1974,6 +1947,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/python-data-abstraction">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-python fab'></span>
+<div class='ml-auto my-auto'>
+10 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Python: Списки</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Списки — основной способ объединять данные в коллекции и одна ...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/python-lists">Посмотреть
 </a></div>
 </div>
 </div>
@@ -2254,30 +2254,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-html5 fab'></span>
 <div class='ml-auto my-auto'>
-5 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Основы HTML, CSS и веб-дизайна</h3>
-</div>
-<div class='text-muted mb-2'>Курс посвящен базовым концепциям веб-дизайна, языка разметки H...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/html">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-html5 fab'></span>
-<div class='ml-auto my-auto'>
 3 часа
 </div>
 </div>
@@ -2290,6 +2266,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/intro_to_web_development">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-html5 fab'></span>
+<div class='ml-auto my-auto'>
+5 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Основы HTML, CSS и веб-дизайна</h3>
+</div>
+<div class='text-muted mb-2'>Курс посвящен базовым концепциям веб-дизайна, языка разметки H...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/html">Посмотреть
 </a></div>
 </div>
 </div>
@@ -2326,48 +2326,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-html5 fab'></span>
 <div class='ml-auto my-auto'>
-2 часа
+10 часов
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Bootstrap: Основы</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>CSS: Flex</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>Курс посвящён Bootstrap — одному из самых популярных фреймворк...</div>
+<div class='text-muted mb-2'>С ростом количества веб-страниц и усложнении дизайна возникла ...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/bootstrap_basic">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-html5 fab'></span>
-<div class='ml-auto my-auto'>
-4 часа
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>SASS: Основы</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
-</div>
-</div>
-<div class='text-muted mb-2'>С развитием технологий и сложности макетов возникла потребност...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/css-sass">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/css-flex">Посмотреть
 </a></div>
 </div>
 </div>
@@ -2434,21 +2407,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-html5 fab'></span>
 <div class='ml-auto my-auto'>
-7 часов
+2 часа
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>SASS: Программирование</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Bootstrap: Основы</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>Курс программирования на SASS является логическим продолжением...</div>
+<div class='text-muted mb-2'>Курс посвящён Bootstrap — одному из самых популярных фреймворк...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/sass-programming">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/bootstrap_basic">Посмотреть
 </a></div>
 </div>
 </div>
@@ -2461,21 +2434,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-html5 fab'></span>
 <div class='ml-auto my-auto'>
-10 часов
+4 часа
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>CSS: Flex</h3>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>SASS: Основы</h3>
 <div>
 <span class='badge badge-light p-0'>PRO</span>
 </div>
 </div>
-<div class='text-muted mb-2'>С ростом количества веб-страниц и усложнении дизайна возникла ...</div>
+<div class='text-muted mb-2'>С развитием технологий и сложности макетов возникла потребност...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/css-flex">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/css-sass">Посмотреть
 </a></div>
 </div>
 </div>
@@ -2503,6 +2476,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/css-positioning">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-html5 fab'></span>
+<div class='ml-auto my-auto'>
+7 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>SASS: Программирование</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Курс программирования на SASS является логическим продолжением...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/sass-programming">Посмотреть
 </a></div>
 </div>
 </div>
@@ -3019,54 +3019,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-code fal'></span>
 <div class='ml-auto my-auto'>
-17 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Введение в Ruby</h3>
-</div>
-<div class='text-muted mb-2'>Ruby – популярный динамический язык, на котором написан легенд...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/ruby">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-code fal'></span>
-<div class='ml-auto my-auto'>
-9 часов
-</div>
-</div>
-</div>
-<div class='card-body d-flex flex-column'>
-<div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Структура и интерпретация компьютерных программ</h3>
-</div>
-<div class='text-muted mb-2'>Фундаментальный курс, основанный на одноименной книге от профе...</div>
-<div class='mt-auto d-flex'>
-<div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/sicp">Посмотреть
-</a></div>
-</div>
-</div>
-</div>
-
-</div>
-<div class='col mb-4 mb-md-5'>
-<div class='card shadow-sm x-shadow-fade-in h-100'>
-<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
-<div class='d-flex'>
-<span class='fa-2x fa-code fal'></span>
-<div class='ml-auto my-auto'>
 3 часа
 </div>
 </div>
@@ -3163,21 +3115,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='d-flex'>
 <span class='fa-2x fa-code fal'></span>
 <div class='ml-auto my-auto'>
-13 часов
+17 часов
 </div>
 </div>
 </div>
 <div class='card-body d-flex flex-column'>
 <div class='row flex-wrap-reverse px-3'>
-<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Протокол HTTP</h3>
-<div>
-<span class='badge badge-light p-0'>PRO</span>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Введение в Ruby</h3>
 </div>
-</div>
-<div class='text-muted mb-2'>Этот курс посвящен интернет-протоколу HTTP благодаря которому ...</div>
+<div class='text-muted mb-2'>Ruby – популярный динамический язык, на котором написан легенд...</div>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
-<a class="x-link-without-decoration stretched-link" href="/courses/http_protocol">Посмотреть
+<a class="x-link-without-decoration stretched-link" href="/courses/ruby">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-code fal'></span>
+<div class='ml-auto my-auto'>
+9 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Структура и интерпретация компьютерных программ</h3>
+</div>
+<div class='text-muted mb-2'>Фундаментальный курс, основанный на одноименной книге от профе...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/sicp">Посмотреть
 </a></div>
 </div>
 </div>
@@ -3205,6 +3178,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class='mt-auto d-flex'>
 <div class='ml-auto'>
 <a class="x-link-without-decoration stretched-link" href="/courses/regexp">Посмотреть
+</a></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class='col mb-4 mb-md-5'>
+<div class='card shadow-sm x-shadow-fade-in h-100'>
+<div class='bg-primary card-header d-flex flex-column py-1 text-white'>
+<div class='d-flex'>
+<span class='fa-2x fa-code fal'></span>
+<div class='ml-auto my-auto'>
+13 часов
+</div>
+</div>
+</div>
+<div class='card-body d-flex flex-column'>
+<div class='row flex-wrap-reverse px-3'>
+<h3 class='h5 col-auto col-sm-10 mr-auto p-0'>Протокол HTTP</h3>
+<div>
+<span class='badge badge-light p-0'>PRO</span>
+</div>
+</div>
+<div class='text-muted mb-2'>Этот курс посвящен интернет-протоколу HTTP благодаря которому ...</div>
+<div class='mt-auto d-flex'>
+<div class='ml-auto'>
+<a class="x-link-without-decoration stretched-link" href="/courses/http_protocol">Посмотреть
 </a></div>
 </div>
 </div>
