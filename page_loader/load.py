@@ -33,7 +33,27 @@ def make_page_name(url):
         name = host_name
     return re.sub(r'(\.|/)', '-', name)
 
+# Правильное название файлов
+# def make_inner_filename(path_to_file):
+#     parts_url = urlparse(path_to_file)
+#     path_without_host = parts_url.path
+#     path = os.path.dirname(path_without_host)
+#     path = path.replace('/', '-')[1:]
+#     if path:
+#         path += '-'
+#     origin_filename = os.path.basename(path_to_file)
+#     file_name, extension = os.path.splitext(origin_filename)
+#     final_filename = ''
+#     for char in file_name:
+#         final_filename += char
+#         if len(final_filename) >= 200:
+#             final_filename = path + final_filename + extension
+#             break
+#     else:
+#         final_filename = path + final_filename + extension
+#     return final_filename
 
+# Хорошо скачивает википедию
 def make_inner_filename(path_to_file):
     parts_url = urlparse(path_to_file)
     path_without_host = parts_url.path
@@ -43,14 +63,24 @@ def make_inner_filename(path_to_file):
         path += '-'
     origin_filename = os.path.basename(path_to_file)
     file_name, extension = os.path.splitext(origin_filename)
+    if '?' in extension:
+        extension = extension.split('?')
+    if '-' in extension:
+        extension = extension.split('-')
     final_filename = ''
+    if type(extension) == list:
+        extension = extension[0]
+        #print(extension)
+        #re.sub(r'\W', '-', extension[1:])
     for char in file_name:
         final_filename += char
-        if len(final_filename) >= 200:
-            final_filename = path + final_filename + extension
+        if len(final_filename) >= 40:
+            final_filename = final_filename + extension
             break
-    else:
-        final_filename = path + final_filename + extension
+        else:
+            # final_filename = re.sub(r'\W', '-', final_filename)
+            final_filename = final_filename + extension
+    #final_filename.replace('%28', '(').replace('%29', ')')
     return final_filename
 
 
@@ -153,7 +183,8 @@ def save_page(url, output, logging_level):
     elif response.status_code in range(500, 511):
         logger.error('Сервер не отвечает.')
         raise KnownError('Сервер не отвечает.')
-    response.encoding = 'utf-8'
+    response.encoding = ''
+    #soup = BeautifulSoup(response.text.replace('%28', '(').replace('%29', ')'), features="lxml")
     soup = BeautifulSoup(response.text, features="lxml")
     logger.debug(response.text)
     page_folder_name = make_page_name(url) + '_files'
