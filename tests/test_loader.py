@@ -1,15 +1,9 @@
-from page_loader.load import make_page_name, get_response, save_page, KnownError, setup_log
+from page_loader.load import make_page_name, save_page, KnownError
 from tests.constants import TEST_DIR_PATH
 import os
 import tempfile
 import pytest
 
-
-# @pytest.fixture
-# def get_fixture(file_name):
-#     fixture = os.path.join(TEST_DIR_PATH, 'fixtures', file_name)
-#     return fixture
-# logger = setup_log(logging_level='debug')
 
 test_url = 'https://ru.hexlet.io/courses'
 test_dir = os.path.join(TEST_DIR_PATH, 'fixtures')
@@ -38,15 +32,9 @@ def test():
             assert os.path.exists(os.path.join(temp, result[1])) is True
 
 
-def test_loader():
-    response = get_response(test_url)
-    directory = test_dir
-    if directory:
-        directory += '/'
-    file_name = make_page_name(test_url)
-    with open(f'{directory}{file_name}', 'w') as file:
-        file.write(response.text)
-    assert file_name == expected_filename
+def test_make_pagename():
+    page_name = make_page_name(test_url)
+    assert page_name == expected_filename
 
 
 def test_exceptions():
