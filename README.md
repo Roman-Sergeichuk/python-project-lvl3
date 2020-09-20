@@ -30,3 +30,5 @@ An example of installing and running the utility is shown below
 [![asciicast](https://asciinema.org/a/FuaquONrFhtThvMwW22GDswy5.svg)](https://asciinema.org/a/FuaquONrFhtThvMwW22GDswy5)
 ### Program errors processing
 [![asciicast](https://asciinema.org/a/oO6iajhRAzPKuCTn5OaTDH8UP.svg)](https://asciinema.org/a/oO6iajhRAzPKuCTn5OaTDH8UP)
+### Downloading process with progress bar
+[![asciicast](https://asciinema.org/a/4zkm6PuPSi6QQqBZKMKzOwOdU.svg)](https://asciinema.org/a/4zkm6PuPSi6QQqBZKMKzOwOdU)
