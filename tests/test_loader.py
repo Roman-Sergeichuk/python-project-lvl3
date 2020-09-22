@@ -1,4 +1,4 @@
-from page_loader.load import make_page_name, save_page, KnownError
+from page_loader.load import make_page_name, make_inner_filename, save_page, KnownError
 from tests.constants import TEST_DIR_PATH
 import os
 import tempfile
@@ -6,6 +6,7 @@ import pytest
 
 
 test_url = 'https://ru.hexlet.io/courses'
+test_local_content_path = 'https://ru.hexlet.io/assets/application.css'
 test_dir = os.path.join(TEST_DIR_PATH, 'fixtures')
 expected_filename = 'ru-hexlet-io-courses'
 non_exist_path = 'non/exist/path'
@@ -35,6 +36,11 @@ def test():
 def test_make_pagename():
     page_name = make_page_name(test_url)
     assert page_name == expected_filename
+
+
+def test_make_local_content_name():
+    local_content_name = make_inner_filename(test_local_content_path)
+    assert local_content_name == 'assets-application.css'
 
 
 def test_exceptions():
