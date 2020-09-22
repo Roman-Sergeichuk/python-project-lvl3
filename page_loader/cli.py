@@ -1,7 +1,7 @@
 import argparse
 
 
-def get_parse_args():
+def get_parse_args():  # pragma: no cover
     parser = argparse.ArgumentParser(description='Page loader')
     parser.add_argument('url')
     parser.add_argument(

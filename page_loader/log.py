@@ -1,7 +1,7 @@
 import logging
 
 
-def make_logging_level(level):
+def make_logging_level(level):  # pragma: no cover
     if level == 'debug' or level == 'DEBUG':
         logging_level = logging.DEBUG
     elif level == 'warning' or level == 'WARNING':
@@ -15,7 +15,7 @@ def make_logging_level(level):
     return logging_level
 
 
-def setup_log(logging_level, logfile='logfile.log'):
+def setup_log(logging_level, logfile='logfile.log'):  # pragma: no cover
     logging_level = make_logging_level(logging_level)
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)

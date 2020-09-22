@@ -4,7 +4,7 @@ from page_loader.cli import get_parse_args
 import sys
 
 
-def main():
+def main():  # pragma: no cover
     parser = get_parse_args()
     args = parser.parse_args()
     url = args.url
@@ -20,5 +20,5 @@ def main():
         sys.exit(0)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     main()

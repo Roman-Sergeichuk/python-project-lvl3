@@ -8,7 +8,7 @@ from progress.bar import IncrementalBar
 from page_loader.log import setup_log
 
 
-class KnownError(Exception):
+class KnownError(Exception):  # pragma: no cover
     pass
 
 
