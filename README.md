@@ -6,29 +6,25 @@
 
 [![Build Status](https://travis-ci.com/Roman-Sergeichuk/python-project-lvl3.svg?branch=master)](https://travis-ci.com/Roman-Sergeichuk/python-project-lvl3)
 
-## Description
+## Описание
+CLI-утилита для скачивания веб-страниц из интернета.
+Возможности утилиты:
+Помимо самой html-страницы, скачивает в отдельную папку локальные ресурсы (картинки, ссылки, скрипты), необходимые для правильного отображения страницы на локальной машине. Производит логирование в отдельный файл (уровень логирования и директорию скачивания можно задать при запуске утилиты).
 
-Utility for calling from the network.
-
-Utility features:
-
-You can specify the folder where you want to put the finished file.
-The utility downloads all the resources on the page and changes the page so that it starts linking to local versions.
-
-## Installation
-For installation use the following command:
+## Установка
+Для установки пакета воспользуйтесь следующей командой:
 
 ```python3 -m pip install --user --upgrade --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple page-loader-by-roman-sergeichuk```
 
-An example of installing and running the utility is shown below
+Пример установки и запуска утилиты показан ниже.
 
-### Downloading of the web page as single html file
+### Загрузка веб-страницы в виде одного html-файла
 [![asciicast](https://asciinema.org/a/OnSawt87QlJKfVZvFe5EtIV2f.svg)](https://asciinema.org/a/OnSawt87QlJKfVZvFe5EtIV2f)
-### Downloading of the page with local web page resources
+### Загрузка веб-страницы с локальными ресурсами
 [![asciicast](https://asciinema.org/a/bDnkMPCKI1dlKZnufiLttqLix.svg)](https://asciinema.org/a/bDnkMPCKI1dlKZnufiLttqLix)
-### Downloading of the page with logging
+### Загрузка веб-страницы с функцией логирования
 [![asciicast](https://asciinema.org/a/FuaquONrFhtThvMwW22GDswy5.svg)](https://asciinema.org/a/FuaquONrFhtThvMwW22GDswy5)
-### Program errors processing
+### Обработка ошибок
 [![asciicast](https://asciinema.org/a/oO6iajhRAzPKuCTn5OaTDH8UP.svg)](https://asciinema.org/a/oO6iajhRAzPKuCTn5OaTDH8UP)
-### Downloading process with progress bar
+### Детализированный процесс загрузки
 [![asciicast](https://asciinema.org/a/4zkm6PuPSi6QQqBZKMKzOwOdU.svg)](https://asciinema.org/a/4zkm6PuPSi6QQqBZKMKzOwOdU)
