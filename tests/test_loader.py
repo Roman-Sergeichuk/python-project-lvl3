@@ -1,59 +1,61 @@
-from page_loader.load import make_page_name, make_inner_filename, save_page, KnownError
-from tests.constants import TEST_DIR_PATH
 import os
 import tempfile
+
 import pytest
 
+from page_loader.loader import (KnownError, make_inner_filename, make_page_name,
+                                save_page)
 
-test_url = 'https://ru.hexlet.io/courses'
-test_local_content_path = 'https://ru.hexlet.io/assets/application.css'
-test_dir = os.path.join(TEST_DIR_PATH, 'fixtures')
-expected_filename = 'ru-hexlet-io-courses'
-non_exist_path = 'non/exist/path'
-wrong_schema_url = 'htts://ru.hexlet.io/courses'
-wrong_hostname_url = 'https://ru.helet.io/courses'
-missing_schema_url = 'ru.hexlet.io/courses'
-response_404_url = 'https://httpbin.org/status/404'
-response_503_url = 'https://httpbin.org/status/503'
+TEST_DIR_PATH = os.path.dirname(__file__)
 
-check = {
-    'http://ru.hexlet.io/courses': ('ru-hexlet-io-courses.html', 'ru-hexlet-io-courses_files'),
-    'https://ru.hexlet.io': ('ru-hexlet-io.html', 'ru-hexlet-io_files'),
-    'https://yandex.ru': ('yandex-ru.html', 'yandex-ru_files'),
-}
+TEST_URL = 'https://ru.hexlet.io/courses'
+TEST_LOCAL_CONTENT_PATH = 'https://ru.hexlet.io/assets/application.css'
+EXPECTED_FILENAME = 'ru-hexlet-io-courses'
+NON_EXIST_PATH = 'non/exist/path'
+WRONG_SCHEMA_URL = 'htts://ru.hexlet.io/courses'
+WRONG_HOSTNAME_URL = 'https://ru.helet.io/courses'
+MISSING_SCHEMA_URL = 'ru.hexlet.io/courses'
+RESPONSE_404_URL = 'https://httpbin.org/status/404'
+RESPONSE_503_URL = 'https://httpbin.org/status/503'
+
+check = (
+    ('http://ru.hexlet.io/courses', 'ru-hexlet-io-courses.html', 'ru-hexlet-io-courses_files'),
+    ('https://ru.hexlet.io', 'ru-hexlet-io.html', 'ru-hexlet-io_files'),
+    ('https://yandex.ru', 'yandex-ru.html', 'yandex-ru_files')
+)
 
 
-def test():
-    for key, item in check.items():
+def test_page_load():
+    for url, expected_content_folder, expected_html_file in check:
         with tempfile.TemporaryDirectory() as temp:
-            result = save_page(key, temp, logging_level='debug')
-            assert os.path.join(temp, result[0]) == os.path.join(temp, item[0])
-            assert os.path.join(temp, result[1]) == os.path.join(temp, item[1])
-            assert os.path.isfile(os.path.join(temp, result[0])) is True
-            assert os.path.exists(os.path.join(temp, result[1])) is True
+            result_folder, result_html = save_page(url, temp, logging_level='debug')
+            assert os.path.join(temp, result_folder) == os.path.join(temp, expected_content_folder)
+            assert os.path.join(temp, result_html) == os.path.join(temp, expected_html_file)
+            assert os.path.isfile(os.path.join(temp, result_folder)) is True
+            assert os.path.exists(os.path.join(temp, result_html)) is True
 
 
 def test_make_pagename():
-    page_name = make_page_name(test_url)
-    assert page_name == expected_filename
+    page_name = make_page_name(TEST_URL)
+    assert page_name == EXPECTED_FILENAME
 
 
 def test_make_local_content_name():
-    local_content_name = make_inner_filename(test_local_content_path)
+    local_content_name = make_inner_filename(TEST_LOCAL_CONTENT_PATH)
     assert local_content_name == 'assets-application.css'
 
 
 def test_exceptions():
     with tempfile.TemporaryDirectory() as tmpdir:
         with pytest.raises(KnownError):
-            save_page(url=test_url, output='/tes', logging_level='debug')
+            save_page(url=TEST_URL, output='/tes', logging_level='debug')
         with pytest.raises(KnownError):
-            save_page(url=test_url, output=non_exist_path, logging_level='debug')
+            save_page(url=TEST_URL, output=NON_EXIST_PATH, logging_level='debug')
         with pytest.raises(KnownError):
-            save_page(url=wrong_schema_url, output=tmpdir, logging_level='debug')
+            save_page(url=WRONG_SCHEMA_URL, output=tmpdir, logging_level='debug')
         with pytest.raises(KnownError):
-            save_page(url=missing_schema_url, output=tmpdir, logging_level='debug')
+            save_page(url=MISSING_SCHEMA_URL, output=tmpdir, logging_level='debug')
         with pytest.raises(KnownError):
-            save_page(url=response_404_url, output=tmpdir, logging_level='debug')
+            save_page(url=RESPONSE_404_URL, output=tmpdir, logging_level='debug')
         with pytest.raises(KnownError):
-            save_page(url=response_503_url, output=tmpdir, logging_level='debug')
+            save_page(url=RESPONSE_503_URL, output=tmpdir, logging_level='debug')
