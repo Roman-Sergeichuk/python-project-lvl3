@@ -2,7 +2,7 @@
 import sys
 
 from page_loader import cli
-from page_loader.loader import KnownError, save_page, load_page
+from page_loader.loader import KnownError, save_page
 from page_loader import logging
 
 
