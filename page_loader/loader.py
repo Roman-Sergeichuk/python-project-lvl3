@@ -75,22 +75,38 @@ def get_response(url, logging_level):
     return response.content
 
 
+def create_dir(path_to_dir):
+    if not os.path.exists(path_to_dir):  # create only once
+        # logger.debug('Создание папки с локальным контентом')
+        try:
+            os.mkdir(path_to_dir, mode=0o700, dir_fd=None)
+        except PermissionError as e:
+            # logger.debug(sys.exc_info()[:2])
+            # logger.error('Нет прав на внесение изменений.')
+            raise KnownError('Нет прав на внесение изменений.') from e
+        except FileNotFoundError as e:
+            # logger.debug(sys.exc_info()[:2])
+            # logger.error('Указанный путь не существует.')
+            raise KnownError('Указанный путь не существует.') from e
+        # logger.debug('Папка с локальным контентом успешно создана')
+
+
 def soup_find_save(url, content_folder, soup, logging_level, tag2find, inner):
     logger = logging.setup(logging_level=logging_level)
     session = requests.Session()
-    if not os.path.exists(content_folder):  # create only once
-        logger.debug('Создание папки с локальным контентом')
-        try:
-            os.mkdir(content_folder, mode=0o700, dir_fd=None)
-        except PermissionError as e:
-            logger.debug(sys.exc_info()[:2])
-            logger.error('Нет прав на внесение изменений.')
-            raise KnownError('Нет прав на внесение изменений.') from e
-        except FileNotFoundError as e:
-            logger.debug(sys.exc_info()[:2])
-            logger.error('Указанный путь не существует.')
-            raise KnownError('Указанный путь не существует.') from e
-        logger.debug('Папка с локальным контентом успешно создана')
+    # if not os.path.exists(content_folder):  # create only once
+    #     logger.debug('Создание папки с локальным контентом')
+    #     try:
+    #         os.mkdir(content_folder, mode=0o700, dir_fd=None)
+    #     except PermissionError as e:
+    #         logger.debug(sys.exc_info()[:2])
+    #         logger.error('Нет прав на внесение изменений.')
+    #         raise KnownError('Нет прав на внесение изменений.') from e
+    #     except FileNotFoundError as e:
+    #         logger.debug(sys.exc_info()[:2])
+    #         logger.error('Указанный путь не существует.')
+    #         raise KnownError('Указанный путь не существует.') from e
+    #     logger.debug('Папка с локальным контентом успешно создана')
     # resources = soup.findAll(tag2find)
     # files_count = len(resources)
     # content_name = ''
@@ -114,6 +130,7 @@ def soup_find_save(url, content_folder, soup, logging_level, tag2find, inner):
         content_dir_name = os.path.basename(content_folder)
         res[inner] = os.path.join(content_dir_name, inner_file_name)
         resources.append((fileurl, filepath))
+        # print((fileurl, filepath))
         logger.debug(inner_file_name)
         # try:
         #     if not os.path.isfile(filepath):  # was not downloaded
@@ -125,8 +142,46 @@ def soup_find_save(url, content_folder, soup, logging_level, tag2find, inner):
         #     print('Не удалось загрузить файл')
         # bar.next()
     # bar.finish()
-    print(resources)
     return soup, resources
+
+
+def load_page(content, path_to_file):
+    try:
+        with open(path_to_file, 'wb') as file:
+            file.write(content)
+    except PermissionError as e:
+        # logger.error('Нет прав на внесение изменений', exc_info=True)
+        raise KnownError('Нет прав на внесение изменений') from e
+    # else:
+        # logger.info('Страница успешно загружена')
+
+
+def load_local_content(resources):
+    bar = IncrementalBar(f'Loading page:', max=len(resources))
+    for resource in resources:
+        fileurl, filepath = resource
+        try:
+            if os.path.isfile(filepath):
+                filepath += '_'
+            session = requests.Session()
+            local = session.get(fileurl)
+            if 'css' in local.headers['content-type'] or \
+                    'javascript' in local.headers['content-type']:
+                # print(local.headers['content-type'])
+                save_to_file(filepath, local.text, TEXT)
+                # with open(filepath, 'w') as file:
+                #     file.write(local.text)
+                bar.next()
+            else:
+                save_to_file(filepath, local.content, BIN)
+                # with open(filepath, 'wb') as file:
+                #     # print(filebin.headers['content-type'])
+                #     file.write(local.content)
+                bar.next()
+        except Exception:
+            # logger.warning('Нет прав на внесение изменений', exc_info=True)
+            print('Не удалось загрузить файл')
+    bar.finish()
 
 
 def save_page(url, output, logging_level):
@@ -134,13 +189,13 @@ def save_page(url, output, logging_level):
     logger.debug('Старт загрузки')
     response = get_response(url, logging_level)
     soup = BeautifulSoup(response, features="lxml")
-    page_folder_name = make_page_name(url) + '_files'
-    folder_path = os.path.join(output, page_folder_name)
+    content_folder_name = make_page_name(url) + '_files'
+    content_folder_path = os.path.join(output, content_folder_name)
     logger.info('Поиск и загрузка контента')
-    new_content, resources = make_local(response, output)
+    # new_content, resources = make_local(response, output)
     resources = []
     for tag_name, attribute in SOURCE.items():
-        soup, res = soup_find_save(url, folder_path, soup, logging_level, tag2find=tag_name, inner=attribute)
+        soup, res = soup_find_save(url, content_folder_path, soup, logging_level, tag2find=tag_name, inner=attribute)
         resources += res
     # logger.info('Поиск и загрузка ссылок')
     # soup = soup_find_save(url, folder_path, soup,
@@ -151,29 +206,18 @@ def save_page(url, output, logging_level):
     page_name = make_page_name(url) + '.html'
     path_to_file = os.path.join(output, page_name)
     logger.debug(path_to_file)
-    try:
-        with open(path_to_file, 'wb') as file:
-            file.write(soup.prettify('utf-8'))
-    except PermissionError as e:
-        logger.error('Нет прав на внесение изменений', exc_info=True)
-        raise KnownError('Нет прав на внесение изменений') from e
-    else:
-        logger.info('Страница успешно загружена')
-    bar = IncrementalBar(f'Loading page:', max=len(resources))
-    for resource in resources:
-        fileurl, filepath = resource
-        try:
-            if not os.path.isfile(filepath):  # was not downloaded
-                with open(filepath, 'wb') as file:
-                    session = requests.Session()
-                    filebin = session.get(fileurl)
-                    file.write(filebin.content)
-                    bar.next()
-        except Exception:
-            logger.warning('Нет прав на внесение изменений', exc_info=True)
-            print('Не удалось загрузить файл')
-    bar.finish()
-    return path_to_file, page_folder_name
+    # try:
+    #     with open(path_to_file, 'wb') as file:
+    #         file.write(soup.prettify('utf-8'))
+    # except PermissionError as e:
+    #     logger.error('Нет прав на внесение изменений', exc_info=True)
+    #     raise KnownError('Нет прав на внесение изменений') from e
+    # else:
+    #     logger.info('Страница успешно загружена')
+    save_to_file(path_to_file, soup.prettify('utf-8'), BIN)
+    create_dir(content_folder_path)
+    load_local_content(resources)
+    return path_to_file, content_folder_name
 
 
 def transform_name(name, ending):
@@ -217,7 +261,7 @@ def make_local(content, dir_name):
                 resource_url_root, resource_url_ext = os.path.splitext(resource_url[1:]) # noqa E501
                 resource_file_name = transform_name(resource_url_root, resource_url_ext) # noqa E501
                 resources.append((resource_url, resource_file_name))
-                print((resource_url, resource_file_name))
+                # print((resource_url, resource_file_name))
                 # change url to local path
                 tag[attribute] = os.path.join(dir_name, resource_file_name) # noqa E501
     new_content = soup.prettify()
