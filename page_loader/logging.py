@@ -1,6 +1,6 @@
 import logging
-from page_loader.cli import make_logging_level
 
+from page_loader.cli import make_logging_level
 
 LOGFILE = 'logfile.log'
 
@@ -21,4 +21,3 @@ def setup(logging_level):  # pragma: no cover
         )
     f.setFormatter(formatter)
     logger.addHandler(f)
-    # return logger

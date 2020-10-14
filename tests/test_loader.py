@@ -3,14 +3,21 @@ import tempfile
 
 import pytest
 from page_loader import logging
+from page_loader import loader
+from bs4 import BeautifulSoup
 
-from page_loader.loader import (KnownError, make_inner_filename, make_page_name,
-                                save_page)
 
-TEST_DIR_PATH = os.path.dirname(__file__)
+def read(file):
+    with open(file, 'r') as input_file:
+        answer = input_file.read()
+    return answer
+
 
 TEST_URL = 'https://ru.hexlet.io/courses'
-TEST_LOCAL_CONTENT_PATH = 'https://ru.hexlet.io/assets/application.css'
+LOCAL_CONTENT = (
+    'https://ru.hexlet.io/assets/application.4 min.css?weger=wefwe&erer=ref',
+    'assets-application_4_min.css'
+)
 EXPECTED_FILENAME = 'ru-hexlet-io-courses'
 NON_EXIST_PATH = 'non/exist/path'
 WRONG_SCHEMA_URL = 'htts://ru.hexlet.io/courses'
@@ -18,47 +25,60 @@ WRONG_HOSTNAME_URL = 'https://ru.helet.io/courses'
 MISSING_SCHEMA_URL = 'ru.hexlet.io/courses'
 RESPONSE_404_URL = 'https://httpbin.org/status/404'
 RESPONSE_503_URL = 'https://httpbin.org/status/503'
-
-check = (
-    ('http://ru.hexlet.io/courses', 'ru-hexlet-io-courses.html', 'ru-hexlet-io-courses_files'),
-    ('https://ru.hexlet.io', 'ru-hexlet-io.html', 'ru-hexlet-io_files'),
-    ('https://yandex.ru', 'yandex-ru.html', 'yandex-ru_files')
-)
+URL = 'https://roman-sergeichuk.github.io/python-project-lvl3'
+EXPECTED_DIRECTORY_NAME = 'roman-sergeichuk-github-io-python-project-lvl3_files'
+EXPECTED_PAGE_NAME = 'roman-sergeichuk-github-io-python-project-lvl3.html'
+SAMPLE_SITE = './tests/fixtures/sample_site.html'
+CONTENT = ('application.css', 'application.js', 'bootstrap_min.css', 'logo.png')
 
 logging.setup(logging_level='debug')
 
 
-def test_page_load():
-    for url, expected_content_folder, expected_html_file in check:
-        with tempfile.TemporaryDirectory() as temp:
-            result_folder, result_html = save_page(url, temp)
-            assert os.path.join(temp, result_folder) == os.path.join(temp, expected_content_folder)
-            assert os.path.join(temp, result_html) == os.path.join(temp, expected_html_file)
-            assert os.path.isfile(os.path.join(temp, result_folder)) is True
-            assert os.path.exists(os.path.join(temp, result_html)) is True
+def test_load_page():
+    with tempfile.TemporaryDirectory() as temp:
+        text = loader.get_response(URL)
+        assert read(SAMPLE_SITE) == text
+        content_folder_name = loader.make_page_name(URL) + '_files'
+        assert content_folder_name == EXPECTED_DIRECTORY_NAME
+        content_folder_path = os.path.join(temp, content_folder_name)
+        soup = BeautifulSoup(text, features="lxml")
+        resources = loader.collect_all_resources(URL, content_folder_path, soup)
+        page_name = loader.make_page_name(URL) + '.html'
+        assert page_name == EXPECTED_PAGE_NAME
+        path_to_file = os.path.join(temp, page_name)
+        loader.save_to_file(path_to_file, soup.prettify('utf-8'), 'bin')
+        assert os.path.isfile(path_to_file)
+        loader.create_dir(content_folder_path)
+        assert os.path.isdir(content_folder_path)
+        loader.load_local_content(resources)
+        assert len(resources) == len(CONTENT)
+        for file in CONTENT:
+            filepath = os.path.join(content_folder_path, file)
+            assert os.path.isfile(filepath)
 
 
 def test_make_pagename():
-    page_name = make_page_name(TEST_URL)
+    page_name = loader.make_page_name(TEST_URL)
     assert page_name == EXPECTED_FILENAME
 
 
 def test_make_local_content_name():
-    local_content_name = make_inner_filename(TEST_LOCAL_CONTENT_PATH)
-    assert local_content_name == 'assets-application.css'
+    url, expected_name = LOCAL_CONTENT
+    name = loader.make_inner_filename(url)
+    assert name == expected_name
 
 
 def test_exceptions():
     with tempfile.TemporaryDirectory() as tmpdir:
-        with pytest.raises(KnownError):
-            save_page(url=TEST_URL, output='/tes')
-        with pytest.raises(KnownError):
-            save_page(url=TEST_URL, output=NON_EXIST_PATH)
-        with pytest.raises(KnownError):
-            save_page(url=WRONG_SCHEMA_URL, output=tmpdir)
-        with pytest.raises(KnownError):
-            save_page(url=MISSING_SCHEMA_URL, output=tmpdir)
-        with pytest.raises(KnownError):
-            save_page(url=RESPONSE_404_URL, output=tmpdir)
-        with pytest.raises(KnownError):
-            save_page(url=RESPONSE_503_URL, output=tmpdir)
+        with pytest.raises(loader.KnownError):
+            loader.save_page(url=TEST_URL, output='/tes')
+        with pytest.raises(loader.KnownError):
+            loader.save_page(url=TEST_URL, output=NON_EXIST_PATH)
+        with pytest.raises(loader.KnownError):
+            loader.save_page(url=WRONG_SCHEMA_URL, output=tmpdir)
+        with pytest.raises(loader.KnownError):
+            loader.save_page(url=MISSING_SCHEMA_URL, output=tmpdir)
+        with pytest.raises(loader.KnownError):
+            loader.save_page(url=RESPONSE_404_URL, output=tmpdir)
+        with pytest.raises(loader.KnownError):
+            loader.save_page(url=RESPONSE_503_URL, output=tmpdir)

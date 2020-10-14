@@ -1,3 +1,4 @@
+import logging
 import os
 import re
 import traceback
@@ -7,9 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 from progress.bar import IncrementalBar
 
-import logging
 
-OBLIGATORY, OPTIONAL = 'obligatory', 'optional'
 LINK, SCRIPT, IMG = 'link', 'script', 'img'
 SRC, HREF = 'src', 'href'
 SOURCE = {LINK: HREF, SCRIPT: SRC, IMG: SRC}
@@ -43,7 +42,8 @@ def make_inner_filename(url):
     file_name, extension = os.path.splitext(origin_filename)
     path = re.sub(r'[^0-9a-zA-Z]+', '-', path)
     file_name = re.sub(r'[^0-9a-zA-Z]+', '_', file_name)
-    extension = (extension.split('?'))[0]  # Иногда к расширениям прицепляются query strings
+    # Иногда к расширениям прицепляются query strings:
+    extension = (extension.split('?'))[0]
     final_filename = (path + file_name)[:PATH_LENGTH_LIMIT]
     return final_filename + extension
 
@@ -71,7 +71,7 @@ def get_response(url):
         logging.debug(traceback.format_exc(10))
         logging.error('Сервер не отвечает.')
         raise KnownError('Сервер не отвечает.')
-    return response.content
+    return response.text
 
 
 def create_dir(path_to_dir):
@@ -120,33 +120,32 @@ def save_to_file(full_file_name, content, format):
     try:
         with open(full_file_name, write_mode) as output_file:
             output_file.write(content)
-    except IOError as error:
+    except IOError:
         logging.debug(traceback.format_exc(10))
         logging.error("Не удалось сохранить файл {}".format(full_file_name))
-        raise KnownError() from error
 
 
 def load_local_content(resources):
     bar = IncrementalBar('Загрузка страницы:', max=len(resources))
     for resource in resources:
         fileurl, filepath = resource
+        if os.path.isfile(filepath):
+            filename, extension = os.path.splitext(filepath)
+            filename += '_'
+            filepath = filename + extension
+        session = requests.Session()
         try:
-            if os.path.isfile(filepath):
-                filename, extension = os.path.splitext(filepath)
-                filename += '_'
-                filepath = filename + extension
-            session = requests.Session()
             local = session.get(fileurl)
-            if 'css' in local.headers['content-type'] or \
-                    'javascript' in local.headers['content-type']:
-                save_to_file(filepath, local.text, TEXT)
-                bar.next()
-            else:
-                save_to_file(filepath, local.content, BIN)
-                bar.next()
-        except Exception:
-            # logger.warning('Нет прав на внесение изменений', exc_info=True)
-            print('Не удалось загрузить файл')
+        except requests.exceptions.InvalidSchema:
+            logging.debug(traceback.format_exc(10))
+            continue
+        if 'css' in local.headers['content-type'] or \
+                'javascript' in local.headers['content-type']:
+            save_to_file(filepath, local.text, TEXT)
+            bar.next()
+        else:
+            save_to_file(filepath, local.content, BIN)
+            bar.next()
     bar.finish()
 
 
@@ -164,84 +163,3 @@ def save_page(url, output):
     load_local_content(resources)
     logging.debug('Загрузка завершена')
     return path_to_file, content_folder_name
-
-
-# def transform_name(name, ending):
-#     return re.sub(r'[^0-9a-zA-Z]', '-', name) + ending
-
-
-# def create_dir(full_dir_name):
-#     try:
-#         os.mkdir(full_dir_name)
-#     except IOError as error:
-#         # logging.debug(traceback.format_exc(10))
-#         # logging.error("Can't create directory {}".format(full_dir_name))
-#         raise KnownError() from error
-
-
-# def get_content(url, priority):
-#     try:
-#         r = requests.get(url)
-#         r.raise_for_status()
-#     except requests.RequestException as error:
-#         # logging.debug(traceback.format_exc(10))
-#         if priority == OBLIGATORY:
-#             # logging.error("Can't get {}".format(url))
-#             raise KnownError() from error
-#         else:
-#             # Some resources may not be available.
-#             # Let's give the program opportunity to finish.
-#             # logging.debug("Can't get {}".format(url))
-#             return
-#     return r.content
-#
-#
-# def make_local(content, dir_name):
-#     soup = BeautifulSoup(content, features='lxml')
-#     resources = []
-#     for tag_name, attribute in SOURCE.items():
-#         tags = soup.find_all([tag_name])
-#         for tag in tags:
-#             resource_url = tag.get(attribute)
-#             if resource_url and resource_url[0] == '/':
-#                 resource_url_root, resource_url_ext = os.path.splitext(resource_url[1:]) # noqa E501
-#                 resource_file_name = transform_name(resource_url_root, resource_url_ext) # noqa E501
-#                 resources.append((resource_url, resource_file_name))
-#                 # print((resource_url, resource_file_name))
-#                 # change url to local path
-#                 tag[attribute] = os.path.join(dir_name, resource_file_name) # noqa E501
-#     new_content = soup.prettify()
-#     return new_content, resources
-#
-#
-
-#
-#
-# def download_resources(url, target_dir, resources):
-#     files_count = len(resources)
-#     url_components = urlparse(url)
-#     bar = IncrementalBar('Loading:', suffix='%(percent)d%%', max=files_count)
-#     for resource in resources:
-#         resource_url, resource_file_name = resource
-#         resource_full_url = url_components._replace(path=resource_url).geturl() # noqa E501
-#         full_resource_name = os.path.join(target_dir, resource_file_name) # noqa E501
-#         resource_content = get_content(resource_full_url, priority=OBLIGATORY)
-#         if resource_content:
-#             save_to_file(full_resource_name, resource_content, BIN)
-#         bar.next()
-#     bar.finish()
-#
-#
-# def load_page(url, output):
-#     output = "" if output is None else output
-#     url_components = urlparse(url)
-#     address = url_components.netloc + url_components.path
-#     file_name = transform_name(address, '.html')
-#     dir_name = transform_name(address, '_files')
-#     full_file_name = os.path.join(output, file_name)
-#     full_dir_name = os.path.join(output, dir_name)
-#     create_dir(full_dir_name)
-#     file_content = get_content(url, OBLIGATORY)
-#     new_content, resources = make_local(file_content, dir_name)
-#     save_to_file(full_file_name, new_content, TEXT)
-#     download_resources(url, full_dir_name, resources)
