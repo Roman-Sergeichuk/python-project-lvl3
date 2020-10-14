@@ -9,11 +9,11 @@ from page_loader import logging
 def main():  # pragma: no cover
     parser = cli.get_parser()
     args = parser.parse_args()
-    # logger = logging.setup(logging_level=args.level)
+    logging.setup(logging_level=args.level)
     # if args.output:
     #     args.output += '/'
     try:
-        save_page(args.url, args.output, args.level)
+        save_page(args.url, args.output)
     except KnownError as e:
         # logger.error('Что-то пошло не так')
         # raise KnownError('Чо-то пошло не так') from e

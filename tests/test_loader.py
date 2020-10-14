@@ -2,6 +2,7 @@ import os
 import tempfile
 
 import pytest
+from page_loader import logging
 
 from page_loader.loader import (KnownError, make_inner_filename, make_page_name,
                                 save_page)
@@ -24,11 +25,13 @@ check = (
     ('https://yandex.ru', 'yandex-ru.html', 'yandex-ru_files')
 )
 
+logging.setup(logging_level='debug')
+
 
 def test_page_load():
     for url, expected_content_folder, expected_html_file in check:
         with tempfile.TemporaryDirectory() as temp:
-            result_folder, result_html = save_page(url, temp, logging_level='debug')
+            result_folder, result_html = save_page(url, temp)
             assert os.path.join(temp, result_folder) == os.path.join(temp, expected_content_folder)
             assert os.path.join(temp, result_html) == os.path.join(temp, expected_html_file)
             assert os.path.isfile(os.path.join(temp, result_folder)) is True
@@ -48,14 +51,14 @@ def test_make_local_content_name():
 def test_exceptions():
     with tempfile.TemporaryDirectory() as tmpdir:
         with pytest.raises(KnownError):
-            save_page(url=TEST_URL, output='/tes', logging_level='debug')
+            save_page(url=TEST_URL, output='/tes')
         with pytest.raises(KnownError):
-            save_page(url=TEST_URL, output=NON_EXIST_PATH, logging_level='debug')
+            save_page(url=TEST_URL, output=NON_EXIST_PATH)
         with pytest.raises(KnownError):
-            save_page(url=WRONG_SCHEMA_URL, output=tmpdir, logging_level='debug')
+            save_page(url=WRONG_SCHEMA_URL, output=tmpdir)
         with pytest.raises(KnownError):
-            save_page(url=MISSING_SCHEMA_URL, output=tmpdir, logging_level='debug')
+            save_page(url=MISSING_SCHEMA_URL, output=tmpdir)
         with pytest.raises(KnownError):
-            save_page(url=RESPONSE_404_URL, output=tmpdir, logging_level='debug')
+            save_page(url=RESPONSE_404_URL, output=tmpdir)
         with pytest.raises(KnownError):
-            save_page(url=RESPONSE_503_URL, output=tmpdir, logging_level='debug')
+            save_page(url=RESPONSE_503_URL, output=tmpdir)

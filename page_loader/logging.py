@@ -21,4 +21,4 @@ def setup(logging_level):  # pragma: no cover
         )
     f.setFormatter(formatter)
     logger.addHandler(f)
-    return logger
+    # return logger

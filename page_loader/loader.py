@@ -1,6 +1,5 @@
 import os
 import re
-import sys
 import traceback
 from urllib.parse import urljoin, urlparse
 
@@ -8,14 +7,14 @@ import requests
 from bs4 import BeautifulSoup
 from progress.bar import IncrementalBar
 
-from page_loader import logging
+import logging
 
 OBLIGATORY, OPTIONAL = 'obligatory', 'optional'
 LINK, SCRIPT, IMG = 'link', 'script', 'img'
 SRC, HREF = 'src', 'href'
 SOURCE = {LINK: HREF, SCRIPT: SRC, IMG: SRC}
 TEXT, BIN = 'text', 'bin'
-NAME_LENGTH_LIMIT = 255
+PATH_LENGTH_LIMIT = 255
 
 
 class KnownError(Exception):  # pragma: no cover
@@ -44,50 +43,51 @@ def make_inner_filename(url):
     file_name, extension = os.path.splitext(origin_filename)
     path = re.sub(r'[^0-9a-zA-Z]+', '-', path)
     file_name = re.sub(r'[^0-9a-zA-Z]+', '_', file_name)
-    extension = (extension.split('?'))[0]
-    final_filename = (path + file_name)[:NAME_LENGTH_LIMIT]
+    extension = (extension.split('?'))[0]  # Иногда к расширениям прицепляются query strings
+    final_filename = (path + file_name)[:PATH_LENGTH_LIMIT]
     return final_filename + extension
 
 
-def get_response(url, logging_level):
-    logger = logging.setup(logging_level=logging_level)
+def get_response(url):
     try:
         response = requests.get(url)
     except (requests.exceptions.InvalidSchema,
             requests.exceptions.InvalidURL,
             requests.exceptions.MissingSchema) as e:
-        logger.debug(sys.exc_info()[:2])
-        logger.error('Ошибка параметров запроса.')
+        logging.debug(traceback.format_exc(10))
+        logging.error('Ошибка параметров запроса.')
         raise KnownError('Ошибка параметров запроса') from e
     except requests.exceptions.ConnectionError as e:
-        logger.debug(sys.exc_info()[:2])
-        logger.error(
+        logging.debug(traceback.format_exc(10))
+        logging.error(
             'Несуществующий адрес сайта либо ошибка подключения.')
         raise KnownError(
             'Несуществующий адрес сайта либо ошибка подключения.') from e
     if response.status_code in range(400, 500):
-        logger.error('Страница не существует.')
+        logging.debug(traceback.format_exc(10))
+        logging.error('Страница не существует.')
         raise KnownError('Страница не существует.')
     elif response.status_code in range(500, 511):
-        logger.error('Сервер не отвечает.')
+        logging.debug(traceback.format_exc(10))
+        logging.error('Сервер не отвечает.')
         raise KnownError('Сервер не отвечает.')
     return response.content
 
 
 def create_dir(path_to_dir):
-    if not os.path.exists(path_to_dir):  # create only once
-        # logger.debug('Создание папки с локальным контентом')
+    if not os.path.exists(path_to_dir):
+        logging.debug('Создание папки с локальным контентом')
         try:
             os.mkdir(path_to_dir, mode=0o700, dir_fd=None)
         except PermissionError as e:
-            # logger.debug(sys.exc_info()[:2])
-            # logger.error('Нет прав на внесение изменений.')
+            logging.debug(traceback.format_exc(10))
+            logging.error('Нет прав на внесение изменений.')
             raise KnownError('Нет прав на внесение изменений.') from e
         except FileNotFoundError as e:
-            # logger.debug(sys.exc_info()[:2])
-            # logger.error('Указанный путь не существует.')
+            logging.debug(traceback.format_exc(10))
+            logging.error('Указанный путь не существует.')
             raise KnownError('Указанный путь не существует.') from e
-        # logger.debug('Папка с локальным контентом успешно создана')
+        logging.debug('Папка с локальным контентом успешно создана')
 
 
 def resources_find_rename(url, content_folder, soup, tag2find, inner):
@@ -116,18 +116,18 @@ def collect_all_resources(url, content_folder_path, soup):
 
 def save_to_file(full_file_name, content, format):
     write_mode = "w" if format == TEXT else 'wb'
-    # logging.info("Saving {}".format(full_file_name))
+    logging.info("Сохраняем файл {}".format(full_file_name))
     try:
         with open(full_file_name, write_mode) as output_file:
             output_file.write(content)
     except IOError as error:
-        # logging.debug(traceback.format_exc(10))
-        # logging.error("Can't create file {}".format(full_file_name))
+        logging.debug(traceback.format_exc(10))
+        logging.error("Не удалось сохранить файл {}".format(full_file_name))
         raise KnownError() from error
 
 
 def load_local_content(resources):
-    bar = IncrementalBar('Loading page:', max=len(resources))
+    bar = IncrementalBar('Загрузка страницы:', max=len(resources))
     for resource in resources:
         fileurl, filepath = resource
         try:
@@ -150,26 +150,24 @@ def load_local_content(resources):
     bar.finish()
 
 
-def save_page(url, output, logging_level):
-    logger = logging.setup(logging_level=logging_level)
-    logger.debug('Старт загрузки')
-    response = get_response(url, logging_level)
-    soup = BeautifulSoup(response, features="lxml")
+def save_page(url, output):
+    logging.debug('Старт загрузки')
+    response = get_response(url)
     content_folder_name = make_page_name(url) + '_files'
     content_folder_path = os.path.join(output, content_folder_name)
-    logger.info('Поиск и загрузка контента')
+    soup = BeautifulSoup(response, features="lxml")
     resources = collect_all_resources(url, content_folder_path, soup)
     page_name = make_page_name(url) + '.html'
     path_to_file = os.path.join(output, page_name)
-    logger.debug(path_to_file)
     save_to_file(path_to_file, soup.prettify('utf-8'), BIN)
     create_dir(content_folder_path)
     load_local_content(resources)
+    logging.debug('Загрузка завершена')
     return path_to_file, content_folder_name
 
 
-def transform_name(name, ending):
-    return re.sub(r'[^0-9a-zA-Z]', '-', name) + ending
+# def transform_name(name, ending):
+#     return re.sub(r'[^0-9a-zA-Z]', '-', name) + ending
 
 
 # def create_dir(full_dir_name):
