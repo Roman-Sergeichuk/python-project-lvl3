@@ -96,6 +96,7 @@ def resources_find_rename(url, content_folder, soup, tag2find, inner):
         if not res.has_attr(inner):
             continue
         inner_file_name = make_inner_filename(res[inner])
+        logging.debug(res[inner])
         fileurl = urljoin(url, res.get(inner))
         filepath = os.path.join(content_folder, inner_file_name)
         content_dir_name = os.path.basename(content_folder)

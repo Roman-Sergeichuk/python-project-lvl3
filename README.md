@@ -14,7 +14,7 @@ CLI-утилита для скачивания веб-страниц из инт
 ## Установка
 Для установки пакета воспользуйтесь следующей командой:
 
-```python3 -m pip install --user --upgrade --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple page-loader-by-roman-sergeichuk```
+    python3 -m pip install --user --upgrade --index-url https://test.pypi.org/simple --extra-index-url https://pypi.org/simple page-loader-by-roman-sergeichuk
 
 Пример установки и запуска утилиты показан ниже.
 
@@ -28,3 +28,5 @@ CLI-утилита для скачивания веб-страниц из инт
 [![asciicast](https://asciinema.org/a/oO6iajhRAzPKuCTn5OaTDH8UP.svg)](https://asciinema.org/a/oO6iajhRAzPKuCTn5OaTDH8UP)
 ### Детализированный процесс загрузки
 [![asciicast](https://asciinema.org/a/4zkm6PuPSi6QQqBZKMKzOwOdU.svg)](https://asciinema.org/a/4zkm6PuPSi6QQqBZKMKzOwOdU)
+### Работа версии 0.6.0 (Одна полоска прогресса вместо трех)
+[![asciicast](https://asciinema.org/a/DDuFeRPaYAhOjGE4EtUa5Gvoj.svg)](https://asciinema.org/a/DDuFeRPaYAhOjGE4EtUa5Gvoj)
