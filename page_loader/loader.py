@@ -51,26 +51,28 @@ def make_inner_filename(url):
 def get_response(url):
     try:
         response = requests.get(url)
+        response.raise_for_status()
     except (requests.exceptions.InvalidSchema,
             requests.exceptions.InvalidURL,
             requests.exceptions.MissingSchema) as e:
         logging.debug(traceback.format_exc(10))
-        logging.error('Ошибка параметров запроса.')
+        logging.error('Ошибка параметров запроса')
         raise KnownError('Ошибка параметров запроса') from e
     except requests.exceptions.ConnectionError as e:
         logging.debug(traceback.format_exc(10))
         logging.error(
-            'Несуществующий адрес сайта либо ошибка подключения.')
+            'Несуществующий адрес сайта либо ошибка подключения')
         raise KnownError(
-            'Несуществующий адрес сайта либо ошибка подключения.') from e
-    if response.status_code in range(400, 500):
-        logging.debug(traceback.format_exc(10))
-        logging.error('Страница не существует.')
-        raise KnownError('Страница не существует.')
-    elif response.status_code in range(500, 511):
-        logging.debug(traceback.format_exc(10))
-        logging.error('Сервер не отвечает.')
-        raise KnownError('Сервер не отвечает.')
+            'Несуществующий адрес сайта либо ошибка подключения') from e
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code in range(400, 500):
+            logging.debug(traceback.format_exc(10))
+            logging.error('Страница не существует')
+            raise KnownError('Страница не существует')
+        elif e.response.status_code in range(500, 511):
+            logging.debug(traceback.format_exc(10))
+            logging.error('Сервер не отвечает')
+            raise KnownError('Сервер не отвечает')
     return response.text
 
 
