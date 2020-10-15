@@ -68,11 +68,11 @@ def get_response(url):
         if e.response.status_code in range(400, 500):
             logging.debug(traceback.format_exc(10))
             logging.error('Страница не существует')
-            raise KnownError('Страница не существует')
+            raise KnownError('Страница не существует') from e
         elif e.response.status_code in range(500, 511):
             logging.debug(traceback.format_exc(10))
             logging.error('Сервер не отвечает')
-            raise KnownError('Сервер не отвечает')
+            raise KnownError('Сервер не отвечает') from e
     return response.text
 
 
@@ -128,28 +128,23 @@ def save_to_file(full_file_name, content, format):
         logging.error("Не удалось сохранить файл {}".format(full_file_name))
 
 
-def load_local_content(resources):
-    bar = IncrementalBar('Загрузка страницы:', max=len(resources))
-    for resource in resources:
-        fileurl, filepath = resource
-        if os.path.isfile(filepath):
-            filename, extension = os.path.splitext(filepath)
-            filename += '_'
-            filepath = filename + extension
-        session = requests.Session()
-        try:
-            local = session.get(fileurl)
-        except requests.exceptions.InvalidSchema:
-            logging.debug(traceback.format_exc(10))
-            continue
+def load_local_content(resource):
+    fileurl, filepath = resource
+    if os.path.isfile(filepath):
+        filename, extension = os.path.splitext(filepath)
+        filename += '_'
+        filepath = filename + extension
+    session = requests.Session()
+    try:
+        local = session.get(fileurl)
+    except requests.exceptions.InvalidSchema:
+        logging.debug(traceback.format_exc(10))
+    else:
         if 'css' in local.headers['content-type'] or \
                 'javascript' in local.headers['content-type']:
             save_to_file(filepath, local.text, TEXT)
-            bar.next()
         else:
             save_to_file(filepath, local.content, BIN)
-            bar.next()
-    bar.finish()
 
 
 def save_page(url, output):
@@ -163,6 +158,10 @@ def save_page(url, output):
     path_to_file = os.path.join(output, page_name)
     save_to_file(path_to_file, soup.prettify('utf-8'), BIN)
     create_dir(content_folder_path)
-    load_local_content(resources)
+    with IncrementalBar('Загрузка ресурсов:', max=len(resources)) as bar:
+        for resource in resources:
+            load_local_content(resource)
+            bar.next()
+        bar.finish()
     logging.debug('Загрузка завершена')
     return path_to_file, content_folder_name

@@ -50,7 +50,8 @@ def test_load_page():
         assert os.path.isfile(path_to_file)
         loader.create_dir(content_folder_path)
         assert os.path.isdir(content_folder_path)
-        loader.load_local_content(resources)
+        for resource in resources:
+            loader.load_local_content(resource)
         assert len(resources) == len(CONTENT)
         for file in CONTENT:
             filepath = os.path.join(content_folder_path, file)
