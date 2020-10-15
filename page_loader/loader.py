@@ -73,7 +73,8 @@ def get_response(url):
             logging.debug(traceback.format_exc(10))
             logging.error('Сервер не отвечает')
             raise KnownError('Сервер не отвечает') from e
-    return response.text
+    else:
+        return response.text
 
 
 def create_dir(path_to_dir):
