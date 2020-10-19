@@ -18,7 +18,7 @@ LOCAL_CONTENT = (
     'https://ru.hexlet.io/assets/application.4 min.css?weger=wefwe&erer=ref',
     'assets-application_4_min.css'
 )
-EXPECTED_FILENAME = 'ru-hexlet-io-courses'
+EXPECTED_FILENAME = 'ru-hexlet-io-courses.html'
 NON_EXIST_PATH = 'non/exist/path'
 WRONG_SCHEMA_URL = 'htts://ru.hexlet.io/courses'
 WRONG_HOSTNAME_URL = 'https://ru.helet.io/courses'
@@ -38,15 +38,15 @@ def test_load_page():
     with tempfile.TemporaryDirectory() as temp:
         text = loader.get_response(URL)
         assert read(SAMPLE_SITE) == text
-        content_folder_name = loader.make_page_name(URL) + '_files'
+        content_folder_name = loader.make_page_name(URL, loader.FILES)
         assert content_folder_name == EXPECTED_DIRECTORY_NAME
         content_folder_path = os.path.join(temp, content_folder_name)
         soup = BeautifulSoup(text, features="lxml")
         resources = loader.collect_all_resources(URL, content_folder_path, soup)
-        page_name = loader.make_page_name(URL) + '.html'
+        page_name = loader.make_page_name(URL, loader.HTML)
         assert page_name == EXPECTED_PAGE_NAME
         path_to_file = os.path.join(temp, page_name)
-        loader.save_to_file(path_to_file, soup.prettify('utf-8'), 'bin')
+        loader.save_to_file(path_to_file, soup.prettify('utf-8'))
         assert os.path.isfile(path_to_file)
         loader.create_dir(content_folder_path)
         assert os.path.isdir(content_folder_path)
@@ -59,7 +59,7 @@ def test_load_page():
 
 
 def test_make_pagename():
-    page_name = loader.make_page_name(TEST_URL)
+    page_name = loader.make_page_name(TEST_URL, loader.HTML)
     assert page_name == EXPECTED_FILENAME
 
 

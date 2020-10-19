@@ -11,16 +11,18 @@ from progress.bar import IncrementalBar
 
 LINK, SCRIPT, IMG = 'link', 'script', 'img'
 SRC, HREF = 'src', 'href'
-SOURCE = {LINK: HREF, SCRIPT: SRC, IMG: SRC}
-TEXT, BIN = 'text', 'bin'
+SOURCE = (LINK, HREF), (SCRIPT, SRC), (IMG, SRC)
+FILES, HTML = '_files', '.html'
 PATH_LENGTH_LIMIT = 255
+MIME_TYPE = 'content-type'
+MIME_SUBTYPES = 'text/css', 'text/javascript'
 
 
 class KnownError(Exception):  # pragma: no cover
     pass
 
 
-def make_page_name(url):
+def make_page_name(url, ending):
     parts_url = urlparse(url)
     host_name = parts_url.netloc
     if parts_url.path:
@@ -28,7 +30,7 @@ def make_page_name(url):
         name = f'{host_name}{path}'
     else:
         name = host_name
-    return re.sub(r'[^0-9a-zA-Z]', '-', name)
+    return f'{re.sub(r"[^0-9a-zA-Z]", "-", name)}{ending}'
 
 
 def make_inner_filename(url):
@@ -55,26 +57,16 @@ def get_response(url):
     except (requests.exceptions.InvalidSchema,
             requests.exceptions.InvalidURL,
             requests.exceptions.MissingSchema) as e:
-        logging.debug(traceback.format_exc(10))
-        logging.error('Ошибка параметров запроса')
         raise KnownError('Ошибка параметров запроса') from e
     except requests.exceptions.ConnectionError as e:
-        logging.debug(traceback.format_exc(10))
-        logging.error(
-            'Несуществующий адрес сайта либо ошибка подключения')
         raise KnownError(
             'Несуществующий адрес сайта либо ошибка подключения') from e
     except requests.exceptions.HTTPError as e:
         if e.response.status_code in range(400, 500):
-            logging.debug(traceback.format_exc(10))
-            logging.error('Страница не существует')
             raise KnownError('Страница не существует') from e
         elif e.response.status_code in range(500, 511):
-            logging.debug(traceback.format_exc(10))
-            logging.error('Сервер не отвечает')
             raise KnownError('Сервер не отвечает') from e
-    else:
-        return response.text
+    return response.text
 
 
 def create_dir(path_to_dir):
@@ -83,12 +75,8 @@ def create_dir(path_to_dir):
         try:
             os.mkdir(path_to_dir, mode=0o700, dir_fd=None)
         except PermissionError as e:
-            logging.debug(traceback.format_exc(10))
-            logging.error('Нет прав на внесение изменений.')
             raise KnownError('Нет прав на внесение изменений.') from e
         except FileNotFoundError as e:
-            logging.debug(traceback.format_exc(10))
-            logging.error('Указанный путь не существует.')
             raise KnownError('Указанный путь не существует.') from e
         logging.debug('Папка с локальным контентом успешно создана')
 
@@ -110,7 +98,7 @@ def resources_find_rename(url, content_folder, soup, tag2find, inner):
 
 def collect_all_resources(url, content_folder_path, soup):
     all_resources = []
-    for tag_name, attribute in SOURCE.items():
+    for tag_name, attribute in SOURCE:
         resources_by_one_tag = resources_find_rename(
             url, content_folder_path, soup,
             tag2find=tag_name, inner=attribute)
@@ -118,8 +106,13 @@ def collect_all_resources(url, content_folder_path, soup):
     return all_resources
 
 
-def save_to_file(full_file_name, content, format):
-    write_mode = "w" if format == TEXT else 'wb'
+def save_to_file(full_file_name, content):
+    if type(content) == str:
+        write_mode = "w"
+    elif type(content) == bytes:
+        write_mode = 'wb'
+    else:
+        raise TypeError('Неизвестный тип контента')
     logging.info("Сохраняем файл {}".format(full_file_name))
     try:
         with open(full_file_name, write_mode) as output_file:
@@ -127,6 +120,12 @@ def save_to_file(full_file_name, content, format):
     except IOError:
         logging.debug(traceback.format_exc(10))
         logging.error("Не удалось сохранить файл {}".format(full_file_name))
+
+
+# def save_html(filename, content):
+#     try:
+#         save_to_file(filename, content)
+#     except KnownError as CriticalError:
 
 
 def load_local_content(resource):
@@ -141,28 +140,25 @@ def load_local_content(resource):
     except requests.exceptions.InvalidSchema:
         logging.debug(traceback.format_exc(10))
     else:
-        if 'css' in local.headers['content-type'] or \
-                'javascript' in local.headers['content-type']:
-            save_to_file(filepath, local.text, TEXT)
+        if local.headers[MIME_TYPE] in MIME_SUBTYPES:
+            save_to_file(filepath, local.text)
         else:
-            save_to_file(filepath, local.content, BIN)
+            save_to_file(filepath, local.content)
 
 
 def save_page(url, output):
-    logging.debug('Старт загрузки')
     response = get_response(url)
-    content_folder_name = make_page_name(url) + '_files'
-    content_folder_path = os.path.join(output, content_folder_name)
     soup = BeautifulSoup(response, features="lxml")
+    content_folder_name = make_page_name(url, FILES)
+    content_folder_path = os.path.join(output, content_folder_name)
     resources = collect_all_resources(url, content_folder_path, soup)
-    page_name = make_page_name(url) + '.html'
+    page_name = make_page_name(url, HTML)
     path_to_file = os.path.join(output, page_name)
-    save_to_file(path_to_file, soup.prettify('utf-8'), BIN)
+    save_to_file(path_to_file, soup.prettify('utf-8'))
     create_dir(content_folder_path)
     with IncrementalBar('Загрузка ресурсов:', max=len(resources)) as bar:
         for resource in resources:
             load_local_content(resource)
             bar.next()
-        bar.finish()
     logging.debug('Загрузка завершена')
     return path_to_file, content_folder_name
