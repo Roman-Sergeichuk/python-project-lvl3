@@ -13,7 +13,7 @@ LINK, SCRIPT, IMG = 'link', 'script', 'img'
 SRC, HREF = 'src', 'href'
 SOURCE = (LINK, HREF), (SCRIPT, SRC), (IMG, SRC)
 FILES, HTML = '_files', '.html'
-PATH_LENGTH_LIMIT = 255
+PATH_LENGTH_LIMIT = 50
 MIME_TYPE = 'content-type'
 MIME_SUBTYPES = 'text/css', 'text/javascript'
 
@@ -66,7 +66,7 @@ def get_response(url):
             raise KnownError('Страница не существует') from e
         elif e.response.status_code in range(500, 511):
             raise KnownError('Сервер не отвечает') from e
-    return response.text
+    return response
 
 
 def create_dir(path_to_dir):
@@ -122,15 +122,9 @@ def save_to_file(full_file_name, content):
         logging.error("Не удалось сохранить файл {}".format(full_file_name))
 
 
-# def save_html(filename, content):
-#     try:
-#         save_to_file(filename, content)
-#     except KnownError as CriticalError:
-
-
 def load_local_content(resource):
     fileurl, filepath = resource
-    if os.path.isfile(filepath):
+    if os.path.isfile(filepath) or os.path.isdir(filepath):
         filename, extension = os.path.splitext(filepath)
         filename += '_'
         filepath = filename + extension
@@ -148,7 +142,7 @@ def load_local_content(resource):
 
 def save_page(url, output):
     response = get_response(url)
-    soup = BeautifulSoup(response, features="lxml")
+    soup = BeautifulSoup(response.text, features="lxml")
     content_folder_name = make_page_name(url, FILES)
     content_folder_path = os.path.join(output, content_folder_name)
     resources = collect_all_resources(url, content_folder_path, soup)

@@ -36,12 +36,12 @@ logging.setup(logging_level='debug')
 
 def test_load_page():
     with tempfile.TemporaryDirectory() as temp:
-        text = loader.get_response(URL)
-        assert read(SAMPLE_SITE) == text
+        response = loader.get_response(URL)
+        assert read(SAMPLE_SITE) == response.text
         content_folder_name = loader.make_page_name(URL, loader.FILES)
         assert content_folder_name == EXPECTED_DIRECTORY_NAME
         content_folder_path = os.path.join(temp, content_folder_name)
-        soup = BeautifulSoup(text, features="lxml")
+        soup = BeautifulSoup(response.text, features="lxml")
         resources = loader.collect_all_resources(URL, content_folder_path, soup)
         page_name = loader.make_page_name(URL, loader.HTML)
         assert page_name == EXPECTED_PAGE_NAME
